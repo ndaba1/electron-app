@@ -1,6 +1,7 @@
 'use strict'
 
-import { app, protocol, BrowserWindow } from 'electron'
+import path from "path"
+import { app, protocol, BrowserWindow, ipcMain } from 'electron'
 import { createProtocol } from 'vue-cli-plugin-electron-builder/lib'
 import installExtension, { VUEJS3_DEVTOOLS } from 'electron-devtools-installer'
 const isDevelopment = process.env.NODE_ENV !== 'production'
@@ -18,9 +19,9 @@ async function createWindow() {
     minHeight: 600,
     minWidth: 800,
     frame: false,
-    autoHideMenuBar: true,
     webPreferences: {
-      
+      preload: "./preload.ts",
+      // preload: path.join(__dirname, "..", "src", "/preload.ts"),
       // Use pluginOptions.nodeIntegration, leave this alone
       // See nklayman.github.io/vue-cli-plugin-electron-builder/guide/security.html#node-integration for more info
       nodeIntegration: (process.env
@@ -39,6 +40,10 @@ async function createWindow() {
     win.loadURL('app://./index.html')
   }
 }
+
+ipcMain.handle("checkResize", () => {
+  console.log("Hello")
+})
 
 // Quit when all windows are closed.
 app.on('window-all-closed', () => {

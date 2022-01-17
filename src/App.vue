@@ -1,5 +1,5 @@
 <template>
-  <Layout class="drag">
+  <Layout>
     <template v-slot:body>
       <router-view />
     </template>
