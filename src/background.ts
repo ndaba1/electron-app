@@ -15,7 +15,10 @@ async function createWindow() {
   const win = new BrowserWindow({
     width: 800,
     height: 600,
-    titleBarStyle: "hidden",
+    minHeight: 600,
+    minWidth: 800,
+    frame: false,
+    autoHideMenuBar: true,
     webPreferences: {
       
       // Use pluginOptions.nodeIntegration, leave this alone
@@ -60,7 +63,7 @@ app.on('ready', async () => {
     // Install Vue Devtools
     try {
       await installExtension(VUEJS3_DEVTOOLS)
-    } catch (e: any) {
+    } catch (e) {
       console.error('Vue Devtools failed to install:', e.toString())
     }
   }
