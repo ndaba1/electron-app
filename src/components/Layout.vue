@@ -24,15 +24,15 @@
           <template class="flex">
             <div v-for="tab in tabs" :key="tab.heading" class="flex">
               <div
-                class="tab p-3 w-24 cursor-pointer rounded-t-xl flex items-center justify-start relative"
+                class="tab p-3 px-6 w-28 cursor-pointer rounded-t-xl flex items-center relative"
                 :class="
                   tab.active ? 'bg-gray-800 text-gray-100' : 'text-gray-500'
                 "
                 @click="console.log('Hello')"
               >
-                <div class="flex">
+                <div class="flex overflow-hidden">
                   {{ tab.heading }}
-                  <h1 class="absolute right-1">X</h1>
+                  <h1 class="absolute right-2">X</h1>
                 </div>
               </div>
             </div>
@@ -147,7 +147,7 @@ export default defineComponent({
 
 .tab {
   max-height: 40px;
-  max-width: 90px;
+  /* max-width: 90px; */
   overflow: hidden;
   white-space: nowrap;
 }
