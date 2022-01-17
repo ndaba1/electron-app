@@ -20,13 +20,15 @@
       <div
         class="h-screen flex-1 flex-shrink bg-gray-900 overflow-y-hidden border-l-2 border-gray-700"
       >
-        <div class="pt-9">
+        <div class="pt-8">
           <template class="flex">
             <div v-for="tab in tabs" :key="tab.heading" class="flex">
               <div
-                class="tab p-3 px-6 w-28 cursor-pointer rounded-t-xl flex items-center relative"
+                class="tab p-3 pr-6 w-28 cursor-pointer flex items-center relative"
                 :class="
-                  tab.active ? 'bg-gray-800 text-gray-100' : 'text-gray-500'
+                  tab.active
+                    ? 'bg-gray-800 text-gray-100 '
+                    : 'text-gray-500 border-r border-gray-800'
                 "
                 @click="console.log('Hello')"
               >
@@ -89,7 +91,7 @@ export default defineComponent({
         {
           heading: "Tab Two",
           ctx: "Home",
-          active: true,
+          active: false,
         },
         {
           heading: "Tab Three",
@@ -104,7 +106,7 @@ export default defineComponent({
         {
           heading: "Tab Two",
           ctx: "Home",
-          active: true,
+          active: false,
         },
         {
           heading: "Tab Three",
