@@ -1,5 +1,5 @@
 <template>
-  <Layout>
+  <Layout class="drag">
     <template v-slot:body>
       <router-view />
     </template>
@@ -18,4 +18,8 @@ export default defineComponent({
 });
 </script>
 
-<style></style>
+<style>
+.drag {
+  -webkit-app-region: drag;
+}
+</style>

@@ -7,7 +7,7 @@
   <div class="no-drag flex flex-col">
     <div class="flex">
       <div
-        class="sidebar h-screen w-1/4 bg-gray-900 text-white p-4 overflow-y-scroll pt-10"
+        class="sidebar h-screen w-1/4 bg-gray-900 text-gray-200 p-4 overflow-y-scroll pt-10"
       >
         <div v-for="item in sidebarItems" :key="item" class="">
           <div
@@ -17,8 +17,16 @@
           </div>
         </div>
       </div>
-      <div class="h-screen flex-1 flex-shrink bg-gray-800">
-        <slot name="body"> </slot>
+      <div class="h-screen flex-1 flex-shrink bg-gray-800 overflow-hidden">
+        <div class="p-1 pt-9">
+          <template class="flex">
+            <div class="tab p-2">Tab One</div>
+            <div class="tab p-2 active">Tab Two</div>
+          </template>
+          <div class="h-screen bg-white">
+            <slot name="body"> </slot>
+          </div>
+        </div>
       </div>
     </div>
     <div
@@ -36,7 +44,13 @@ export default defineComponent({
   name: "Layout",
   data() {
     return {
-      sidebarItems: ["Home", "Workflows", "Marketplace", "Github", "Settings"],
+      sidebarItems: [
+        "Home",
+        "Workflows",
+        "Marketplace",
+        "Github",
+        "Configurations",
+      ],
     };
   },
   methods: {
@@ -68,5 +82,17 @@ export default defineComponent({
 .sidebar::-webkit-scrollbar-thumb {
   background-color: rgba(255, 255, 255, 0.3);
   border-radius: 1rem;
+}
+
+.tab {
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+
+  border-bottom-left-radius: -100px;
+  border-top-right-radius: -100px;
+}
+
+.tab.active {
+  background-color: white;
 }
 </style>
