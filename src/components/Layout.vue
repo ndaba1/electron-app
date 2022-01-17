@@ -17,13 +17,27 @@
           </div>
         </div>
       </div>
-      <div class="h-screen flex-1 flex-shrink bg-gray-800 overflow-hidden">
-        <div class="p-1 pt-9">
+      <div
+        class="h-screen flex-1 flex-shrink bg-gray-900 overflow-y-hidden border-l-2 border-gray-700"
+      >
+        <div class="pt-9">
           <template class="flex">
-            <div class="tab p-2">Tab One</div>
-            <div class="tab p-2 active">Tab Two</div>
+            <div v-for="tab in tabs" :key="tab.heading" class="flex">
+              <div
+                class="tab p-3 w-24 cursor-pointer rounded-t-xl flex items-center justify-start relative"
+                :class="
+                  tab.active ? 'bg-gray-800 text-gray-100' : 'text-gray-500'
+                "
+                @click="console.log('Hello')"
+              >
+                <div class="flex">
+                  {{ tab.heading }}
+                  <h1 class="absolute right-1">X</h1>
+                </div>
+              </div>
+            </div>
           </template>
-          <div class="h-screen bg-white">
+          <div class="h-screen bg-gray-800">
             <slot name="body"> </slot>
           </div>
         </div>
@@ -50,6 +64,53 @@ export default defineComponent({
         "Marketplace",
         "Github",
         "Configurations",
+      ],
+      tabs: [
+        {
+          heading: "Tab One...............",
+          ctx: "Home",
+          active: false,
+        },
+        {
+          heading: "Tab Two",
+          ctx: "Home",
+          active: true,
+        },
+        {
+          heading: "Tab Three",
+          ctx: "Home",
+          active: false,
+        },
+        {
+          heading: "Tab One",
+          ctx: "Home",
+          active: false,
+        },
+        {
+          heading: "Tab Two",
+          ctx: "Home",
+          active: true,
+        },
+        {
+          heading: "Tab Three",
+          ctx: "Home",
+          active: false,
+        },
+        {
+          heading: "Tab One",
+          ctx: "Home",
+          active: false,
+        },
+        {
+          heading: "Tab Two",
+          ctx: "Home",
+          active: true,
+        },
+        {
+          heading: "Tab Three",
+          ctx: "Home",
+          active: false,
+        },
       ],
     };
   },
@@ -85,14 +146,9 @@ export default defineComponent({
 }
 
 .tab {
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
-
-  border-bottom-left-radius: -100px;
-  border-top-right-radius: -100px;
-}
-
-.tab.active {
-  background-color: white;
+  max-height: 40px;
+  max-width: 90px;
+  overflow: hidden;
+  white-space: nowrap;
 }
 </style>

@@ -19,7 +19,7 @@ export default defineComponent({
 </script>
 
 <style>
-.drag {
-  -webkit-app-region: drag;
+* {
+  box-sizing: border-box;
 }
 </style>
